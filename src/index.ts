@@ -79,9 +79,14 @@ window.Webflow.push(() => {
 
       const totalPrice = calculateTotalPrice(selectedDates, memberDiscount, lodgeRates['bastun']);
       document.getElementById('total-price').textContent = totalPrice.toString();
+
+      appendPriceInput(totalPrice);
     },
   });
-
+  function appendPriceInput(totalPrice) {
+    const priceInput = document.getElementById('price-input');
+    priceInput.value = totalPrice.toString();
+  }
   const calculateTotalPrice = (selectedDates, memberDiscount, lodgeRate) => {
     let totalPrice = 0;
 
