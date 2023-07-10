@@ -1,5 +1,11 @@
 # @fredrik@9x6/BastuNorreda
 
+## 1.0.2
+
+### Patch Changes
+
+- 0fdd4c0: lade till price input field och function
+
 ## 1.0.1
 
 ### Patch Changes
