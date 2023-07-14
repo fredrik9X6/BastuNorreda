@@ -70,7 +70,6 @@ window.Webflow.push(() => {
   };
 
   const fp = flatpickr('#bastun', {
-    mode: 'multiple',
     dateFormat: 'Y-m-d',
     minDate: new Date().fp_incr(14),
     disable: getBookedDates('bastun'),
