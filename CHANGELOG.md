@@ -1,5 +1,11 @@
 # @fredrik@9x6/BastuNorreda
 
+## 1.0.3
+
+### Patch Changes
+
+- c152ea3: tog bort multiple select för det inte fungerade senare i workflow
+
 ## 1.0.2
 
 ### Patch Changes
