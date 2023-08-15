@@ -3,24 +3,38 @@ import { Swedish } from 'flatpickr/dist/l10n/sv.js';
 
 import type { Event } from './types';
 
+// const getEvents = (): Event[] => {
+//   const scripts = document.querySelectorAll<HTMLScriptElement>('[data-element="event-data"]');
+//   const events = [...scripts].map((script) => {
+//     const event: Event = JSON.parse(script.textContent!);
+//     event.start = new Date(event.start);
+//     // event.end = new Date(event.end);
+
+//     return event;
+//   });
+
+//   // Get the last part of the current URL
+//   const currentUrl = window.location.href;
+//   const lastPart = currentUrl.substr(currentUrl.lastIndexOf('/') + 1);
+
+//   // Filter items where "stugaid" matches the last part of the URL
+//   const filteredEvents = events.filter((event) => event.stugaid === lastPart);
+
+//   return filteredEvents;
+// };
+
 const getEvents = (): Event[] => {
   const scripts = document.querySelectorAll<HTMLScriptElement>('[data-element="event-data"]');
   const events = [...scripts].map((script) => {
     const event: Event = JSON.parse(script.textContent!);
     event.start = new Date(event.start);
     event.end = new Date(event.end);
+    event.start.setDate(event.start.getDate() + 1);
 
     return event;
   });
 
-  // Get the last part of the current URL
-  const currentUrl = window.location.href;
-  const lastPart = currentUrl.substr(currentUrl.lastIndexOf('/') + 1);
-
-  // Filter items where "stugaid" matches the last part of the URL
-  const filteredEvents = events.filter((event) => event.stugaid === lastPart);
-
-  return filteredEvents;
+  return events;
 };
 
 const getBookedDates = (lodge: string): string[] => {
@@ -28,7 +42,7 @@ const getBookedDates = (lodge: string): string[] => {
     .filter((event) => event.lodge === lodge)
     .map((event) => {
       const startDate = new Date(event.start);
-      startDate.setDate(startDate.getDate() + 1); // Shift the startDate by one day later
+      // startDate.setDate(startDate.getDate() + 1); // Shift the startDate by one day later
       return startDate.toISOString().split('T')[0];
     });
 };
@@ -68,7 +82,7 @@ window.Webflow.push(() => {
       weekendRate: 100,
     },
   };
-
+  console.log(getBookedDates('bastun'));
   const fp = flatpickr('#bastun', {
     dateFormat: 'Y-m-d',
     minDate: new Date().fp_incr(14),
