@@ -1,5 +1,11 @@
 # @fredrik@9x6/BastuNorreda
 
+## 1.0.4
+
+### Patch Changes
+
+- 7db9866: uppdaterade getEvents function för att displaya rätt diabledDates i flatpickr
+
 ## 1.0.3
 
 ### Patch Changes
